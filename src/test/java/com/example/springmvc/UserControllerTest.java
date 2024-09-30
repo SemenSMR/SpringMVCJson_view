@@ -1,6 +1,6 @@
 package com.example.springmvc;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -24,8 +24,8 @@ public class UserControllerTest {
         mockMvc.perform(get("/users")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].name").exists())
-                .andExpect(jsonPath("$[0].email").exists())
+                .andExpect(jsonPath("$[0].nameUsers").exists())
+                .andExpect(jsonPath("$[0].emailUsers").exists())
                 .andExpect(jsonPath("$[0].orders").doesNotExist());
 
     }
@@ -34,7 +34,7 @@ public class UserControllerTest {
         mockMvc.perform(get("/users/1")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").exists())
+                .andExpect(jsonPath("$.nameUsers").exists())
                 .andExpect(jsonPath("$.orders").exists());
     }
 }

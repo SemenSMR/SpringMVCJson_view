@@ -26,7 +26,7 @@ public class UserController {
     }
 
     @JsonView(Views.UserDetails.class)
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseEntity<User> getUserId(@PathVariable Long id) {
         return userService.getUserById(id)
                 .map(user -> new ResponseEntity<>(user, HttpStatus.OK))

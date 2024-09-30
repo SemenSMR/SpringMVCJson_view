@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotBlank;
 import java.util.List;
 
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,6 +16,7 @@ public class User {
     private Long id;
     @NotBlank
     @JsonView(Views.UserSummary.class)
+    @Column(nullable = false)
     private String nameUsers;
     @Email
     @JsonView(Views.UserSummary.class)
